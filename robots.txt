@@ -1,0 +1,65 @@
+# robots.txt — Harshal Donarkar Portfolio
+# © 2025 Harshal Naresh Donarkar. All rights reserved.
+# https://harshaldonarkar.dev
+
+# ── Allow standard search engine crawlers ───────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Block AI training crawlers ───────────────────────────────
+# This portfolio is NOT licensed for AI training datasets.
+# Scraping for model training violates the CC BY-NC-ND 4.0 license.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# ── Sitemap ──────────────────────────────────────────────────
+Sitemap: https://harshaldonarkar.dev/sitemap.xml
