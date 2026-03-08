@@ -304,31 +304,35 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* ══════ P5: EDUCATION ══════ */
 #p7{width:600px;background:var(--faint)}
-.edu-in{padding:2.5rem;height:100%;display:flex;flex-direction:column}
-.edu-b{padding:1.2rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
-.edu-b:first-of-type{border-top:1px solid var(--ink);margin-top:1.2rem}
-.edu-yr{font-family:var(--f-mono);font-size:0.56rem;letter-spacing:0.1em;color:var(--red);margin-bottom:0.35rem}
-.edu-dg{font-family:var(--f-serif);font-size:1rem;font-weight:700;margin-bottom:0.2rem;line-height:1.3}
-.edu-sc{font-family:var(--f-mono);font-size:0.62rem;color:var(--tag-color);margin-bottom:0.35rem}
-.edu-badge{font-family:var(--f-mono);font-size:0.6rem;padding:0.15rem 0.55rem;background:var(--ink);color:var(--paper);display:inline-block}
-.edu-loc{font-family:var(--f-mono);font-size:0.56rem;color:var(--tan);margin-top:0.2rem}
-.ach-a{padding:1.2rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
-.ach-rw{display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:0.8rem}
+.edu-in{padding:1.8rem 2.5rem;height:100%;display:flex;flex-direction:column;overflow:hidden}
+.edu-scroll{flex:1;overflow-y:auto;padding-right:0.5rem;min-height:0}
+.edu-scroll::-webkit-scrollbar{width:3px}
+.edu-scroll::-webkit-scrollbar-track{background:transparent}
+.edu-scroll::-webkit-scrollbar-thumb{background:var(--tan);border-radius:2px}
+.edu-b{padding:0.75rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
+.edu-b:first-of-type{border-top:1px solid var(--ink);margin-top:0.75rem}
+.edu-yr{font-family:var(--f-mono);font-size:0.54rem;letter-spacing:0.1em;color:var(--red);margin-bottom:0.25rem}
+.edu-dg{font-family:var(--f-serif);font-size:0.95rem;font-weight:700;margin-bottom:0.15rem;line-height:1.25}
+.edu-sc{font-family:var(--f-mono);font-size:0.6rem;color:var(--tag-color);margin-bottom:0.25rem}
+.edu-badge{font-family:var(--f-mono);font-size:0.58rem;padding:0.12rem 0.5rem;background:var(--ink);color:var(--paper);display:inline-block}
+.edu-loc{font-family:var(--f-mono);font-size:0.54rem;color:var(--tan);margin-top:0.15rem}
+.ach-a{padding:0.75rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
+.ach-rw{display:flex;gap:0.75rem;align-items:flex-start;margin-bottom:0.55rem}
 .ach-rw:last-child{margin-bottom:0}
-.ach-em{font-size:1.4rem;flex-shrink:0}
-.ach-rk{font-family:var(--f-display);font-size:1.4rem;line-height:1}
-.ach-ev{font-family:var(--f-mono);font-size:0.6rem;color:var(--tag-color);line-height:1.5;margin-top:0.15rem}
-.ach-org{font-family:var(--f-mono);font-size:0.53rem;color:var(--tan);margin-top:0.15rem}
-.cert-a{padding:1.2rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
-.cert-rw{display:flex;gap:0.65rem;align-items:flex-start;margin-bottom:0.7rem}
+.ach-em{font-size:1.2rem;flex-shrink:0}
+.ach-rk{font-family:var(--f-display);font-size:1.2rem;line-height:1}
+.ach-ev{font-family:var(--f-mono);font-size:0.58rem;color:var(--tag-color);line-height:1.4;margin-top:0.1rem}
+.ach-org{font-family:var(--f-mono);font-size:0.52rem;color:var(--tan);margin-top:0.1rem}
+.cert-a{padding:0.75rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
+.cert-rw{display:flex;gap:0.6rem;align-items:flex-start;margin-bottom:0.5rem}
 .cert-rw:last-child{margin-bottom:0}
-.cert-ic{font-size:0.95rem;width:22px;flex-shrink:0}
-.cert-nm{font-family:var(--f-mono);font-size:0.62rem;line-height:1.45;font-weight:500}
-.cert-is{font-family:var(--f-mono);font-size:0.55rem;color:var(--tan)}
-.lead-a{padding:1.2rem 0;margin-top:auto}
-.lead-rw{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.55rem;gap:0.5rem;flex-wrap:wrap}
-.lead-ro{font-family:var(--f-serif);font-size:0.92rem;font-style:italic}
-.lead-yr{font-family:var(--f-mono);font-size:0.58rem;color:var(--red);white-space:nowrap}
+.cert-ic{font-size:0.9rem;width:20px;flex-shrink:0}
+.cert-nm{font-family:var(--f-mono);font-size:0.6rem;line-height:1.35;font-weight:500}
+.cert-is{font-family:var(--f-mono);font-size:0.53rem;color:var(--tan)}
+.lead-a{padding:0.75rem 0}
+.lead-rw{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.4rem;gap:0.5rem;flex-wrap:wrap}
+.lead-ro{font-family:var(--f-serif);font-size:0.88rem;font-style:italic}
+.lead-yr{font-family:var(--f-mono);font-size:0.56rem;color:var(--red);white-space:nowrap}
 
 /* ══════ P6: CONTACT + FORM ══════ */
 #p8{width:100vw;background:var(--ink);color:#F2EDE4;border-right:none}
@@ -820,9 +824,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
               <div class="case-inner">
                 <div>
                   <div class="case-section-lbl">The Problem</div>
-                  <div class="case-section-body">Early skin cancer detection dramatically improves survival rates, but dermatologist access is limited in rural India. A reliable, accessible screening tool could bridge that gap.</div>
+                  <div class="case-section-body">Skin cancer affects 3M+ people yearly per WHO. Dermatologists rely on visual assessment which is prone to bias — especially across 7 lesion types that share similar visual characteristics. Rural access to specialists is limited.</div>
                   <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
-                  <div class="case-section-body">A custom CNN trained on the HAM10000 dataset, optimised for high TPR to minimise false negatives — the critical failure mode in medical diagnosis. Deployed as a Flask web app with a Figma-designed UI, reducing request latency by 150ms through async inference.</div>
+                  <div class="case-section-body">CNN trained on the ISIC 2024 dataset classifying 7 lesion types: Melanoma, BCC, SCC, Actinic Keratoses, Vascular Lesions, Melanocytic Nevi, Dermatofibroma. Oversampling + data augmentation resolved class imbalance. Deployed as a Flask/Streamlit web app for real-time clinical screening. Published in IJCNIS Vol 16(5), 2024.</div>
                 </div>
                 <div>
                   <div class="case-section-lbl">Outcomes</div>
@@ -1025,18 +1029,44 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="panel" id="p6">
     <div class="res-in">
       <div class="pl-inv">Research</div>
-      <div class="pt-inv">What I'm<br>Curious<br>About</div>
+      <div class="pt-inv">Published<br>Work</div>
       <div class="res-list">
         <div class="ri"><div class="ri-t">👁️ Multimodal Vision-Language Models</div><div class="ri-d">GPT-4V and LLaVA bridging vision & language for richer scene understanding, particularly in medical imaging.</div><div class="ri-kws"><span class="ri-kw">VLMs</span><span class="ri-kw">CLIP</span><span class="ri-kw">LLaVA</span><span class="ri-kw">Medical</span></div></div>
-        <div class="ri"><div class="ri-t">🔊 Speech & Audio Intelligence</div><div class="ri-d">Extending Whisper pipelines with diarization, emotion detection & real-time transcription for low-resource languages.</div><div class="ri-kws"><span class="ri-kw">ASR</span><span class="ri-kw">Diarization</span><span class="ri-kw">Multilingual</span></div></div>
         <div class="ri"><div class="ri-t">🏥 AI for Healthcare Diagnostics</div><div class="ri-d">Explainable AI and uncertainty quantification for diagnostic models — clinical trust and physician interpretability.</div><div class="ri-kws"><span class="ri-kw">XAI</span><span class="ri-kw">Grad-CAM</span><span class="ri-kw">CNN</span></div></div>
-        <div class="ri"><div class="ri-t">⚙️ Efficient MLOps & Model Compression</div><div class="ri-d">Quantization, pruning & knowledge distillation to bring large models to edge devices without sacrificing performance.</div><div class="ri-kws"><span class="ri-kw">Quantization</span><span class="ri-kw">TensorRT</span><span class="ri-kw">ONNX</span></div></div>
       </div>
       <div class="papers">
-        <div class="papers-lbl">Currently Reading</div>
-        <div class="pa-r"><div class="pa-n">01</div><div><div class="pa-ti">Attention Is All You Need — Vaswani et al.</div><div class="pa-v">NeurIPS 2017</div></div></div>
-        <div class="pa-r"><div class="pa-n">02</div><div><div class="pa-ti">Visual Instruction Tuning (LLaVA)</div><div class="pa-v">NeurIPS 2023 · Liu et al.</div></div></div>
-        <div class="pa-r"><div class="pa-n">03</div><div><div class="pa-ti">DistilBERT: a distilled version of BERT</div><div class="pa-v">NeurIPS 2019 Workshop</div></div></div>
+        <div class="papers-lbl">Published Papers</div>
+
+        <div class="pa-r" style="align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(242,237,228,0.1)">
+          <div class="pa-n">01</div>
+          <div style="flex:1">
+            <div class="pa-ti">Optimising Job Search using Web Scraping</div>
+            <div class="pa-v">IRJET · Vol 11, Issue 4 · Apr 2024 · Impact Factor 8.226</div>
+            <div style="font-family:var(--f-mono);font-size:0.56rem;color:rgba(242,237,228,0.45);line-height:1.6;margin-top:0.4rem">A web scraping platform that aggregates job listings from multiple sources into a centralised portal with AI-powered recommendations, skill-based filtering, and personalised job matching.</div>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem">
+              <span class="ri-kw">BeautifulSoup</span><span class="ri-kw">Selenium</span><span class="ri-kw">ML Recommendations</span><span class="ri-kw">Python</span>
+            </div>
+            <div style="margin-top:0.5rem">
+              <a href="https://www.irjet.net/archives/V11/i4/IRJET-V11I4318.pdf" target="_blank" rel="noopener" style="font-family:var(--f-mono);font-size:0.55rem;color:var(--red);text-decoration:none;border-bottom:1px solid rgba(193,18,31,0.3);padding-bottom:1px">↗ Read Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pa-r" style="align-items:flex-start;padding:1rem 0">
+          <div class="pa-n">02</div>
+          <div style="flex:1">
+            <div class="pa-ti">Skin Cancer Prediction Model using Deep Learning</div>
+            <div class="pa-v">IJCNIS · Vol 16, Issue 5 · 2024 · ISSN 2073-607X · Received Oct 2024, Accepted Nov 2024</div>
+            <div style="font-family:var(--f-mono);font-size:0.56rem;color:rgba(242,237,228,0.45);line-height:1.6;margin-top:0.4rem">CNN trained on the ISIC 2024 dataset to classify 7 skin lesion types including melanoma, BCC and SCC. Used oversampling + data augmentation to resolve class imbalance. Deployed as a real-time Flask/Streamlit web app for clinical screening.</div>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem">
+              <span class="ri-kw">TensorFlow</span><span class="ri-kw">CNN</span><span class="ri-kw">ISIC 2024</span><span class="ri-kw">Flask</span><span class="ri-kw">Streamlit</span><span class="ri-kw">Healthcare AI</span>
+            </div>
+            <div style="margin-top:0.5rem">
+              <a href="https://www.ijcnis.org/index.php/ijcnis/article/view/7727" target="_blank" rel="noopener" style="font-family:var(--f-mono);font-size:0.55rem;color:var(--red);text-decoration:none;border-bottom:1px solid rgba(193,18,31,0.3);padding-bottom:1px">↗ Read Paper</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1047,23 +1077,25 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="edu-in">
       <div class="pl">Background</div>
       <div class="pt" style="font-size:2.8rem">Education<br>&amp; Beyond</div>
-      <div class="edu-b"><div class="edu-yr">2021 — 2025</div><div class="edu-dg">B.Tech in Computer Science & Engineering</div><div class="edu-sc">Rashtrasant Tukdoji Maharaj Nagpur University</div><span class="edu-badge">CGPA: 7.74</span><div class="edu-loc">Nagpur, Maharashtra</div></div>
-      <div class="edu-b"><div class="edu-yr">2019 — 2021</div><div class="edu-dg">Higher Secondary Education</div><div class="edu-sc">Shri Shivaji Science College</div><span class="edu-badge">88.0%</span><div class="edu-loc">Nagpur, Maharashtra</div></div>
-      <div class="ach-a">
-        <div class="pl" style="margin-bottom:0.75rem">Achievements</div>
-        <div class="ach-rw"><div class="ach-em">🥉</div><div><div class="ach-rk">2nd Runner-Up</div><div class="ach-ev">'Hackengers' Hackathon</div><div class="ach-org">Livewire Teaching Institute, Chennai</div></div></div>
-        <div class="ach-rw"><div class="ach-em">🏆</div><div><div class="ach-rk">Top 10 Finalist</div><div class="ach-ev">24-Hour National Hackathon 2K24</div><div class="ach-org">Innovation Foundation, Pune</div></div></div>
-      </div>
-      <div class="cert-a">
-        <div class="pl" style="margin-bottom:0.6rem">Certifications</div>
-        <div class="cert-rw"><span class="cert-ic">📐</span><div><div class="cert-nm">Linear Algebra for ML & Data Science</div><div class="cert-is">Coursera / DeepLearning.AI</div></div></div>
-        <div class="cert-rw"><span class="cert-ic">📊</span><div><div class="cert-nm">Google Data Analytics Professional</div><div class="cert-is">Google</div></div></div>
-        <div class="cert-rw"><span class="cert-ic">🐍</span><div><div class="cert-nm">Python Programming & Data Structures</div><div class="cert-is">Professional Certification</div></div></div>
-      </div>
-      <div class="lead-a">
-        <div class="pl" style="margin-bottom:0.6rem">Leadership</div>
-        <div class="lead-rw"><span class="lead-ro">Technical Head — Coding Club, KDKCE</span><span class="lead-yr">2023–24</span></div>
-        <div class="lead-rw"><span class="lead-ro">International Service Director — Rotaract</span><span class="lead-yr">2024–25</span></div>
+      <div class="edu-scroll">
+        <div class="edu-b"><div class="edu-yr">2021 — 2025</div><div class="edu-dg">B.Tech in Computer Science & Engineering</div><div class="edu-sc">Rashtrasant Tukdoji Maharaj Nagpur University</div><span class="edu-badge">CGPA: 7.74</span><div class="edu-loc">Nagpur, Maharashtra</div></div>
+        <div class="edu-b"><div class="edu-yr">2019 — 2021</div><div class="edu-dg">Higher Secondary Education</div><div class="edu-sc">Shri Shivaji Science College</div><span class="edu-badge">88.0%</span><div class="edu-loc">Nagpur, Maharashtra</div></div>
+        <div class="ach-a">
+          <div class="pl" style="margin-bottom:0.75rem">Achievements</div>
+          <div class="ach-rw"><div class="ach-em">🥉</div><div><div class="ach-rk">2nd Runner-Up</div><div class="ach-ev">'Hackengers' Hackathon</div><div class="ach-org">Livewire Teaching Institute, Chennai</div></div></div>
+          <div class="ach-rw"><div class="ach-em">🏆</div><div><div class="ach-rk">Top 10 Finalist</div><div class="ach-ev">24-Hour National Hackathon 2K24</div><div class="ach-org">Innovation Foundation, Pune</div></div></div>
+        </div>
+        <div class="cert-a">
+          <div class="pl" style="margin-bottom:0.6rem">Certifications</div>
+          <div class="cert-rw"><span class="cert-ic">📐</span><div><div class="cert-nm">Linear Algebra for ML & Data Science</div><div class="cert-is">Coursera / DeepLearning.AI</div></div></div>
+          <div class="cert-rw"><span class="cert-ic">📊</span><div><div class="cert-nm">Google Data Analytics Professional</div><div class="cert-is">Google</div></div></div>
+          <div class="cert-rw"><span class="cert-ic">🐍</span><div><div class="cert-nm">Python Programming & Data Structures</div><div class="cert-is">Professional Certification</div></div></div>
+        </div>
+        <div class="lead-a">
+          <div class="pl" style="margin-bottom:0.6rem">Leadership</div>
+          <div class="lead-rw"><span class="lead-ro">Technical Head — Coding Club, KDKCE</span><span class="lead-yr">2023–24</span></div>
+          <div class="lead-rw"><span class="lead-ro">International Service Director — Rotaract</span><span class="lead-yr">2024–25</span></div>
+        </div>
       </div>
     </div>
   </div>
