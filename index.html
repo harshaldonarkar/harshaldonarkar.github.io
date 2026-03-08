@@ -4,6 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harshal Donarkar — AI Engineer</title>
+<!-- Favicon — HD monogram -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23C1121F'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='14' letter-spacing='0.5' fill='%23F2EDE4'%3EHD%3C/text%3E%3C/svg%3E">
+<link rel="alternate icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23C1121F'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='14' letter-spacing='0.5' fill='%23F2EDE4'%3EHD%3C/text%3E%3C/svg%3E">
+<!-- Dynamic favicon: pulses red dot when tab is active, dims when hidden -->
+<script>
+(function(){
+  const active = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23C1121F'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='14' letter-spacing='0.5' fill='%23F2EDE4'%3EHD%3C/text%3E%3C/svg%3E";
+  const away  = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230D0D0D'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='14' letter-spacing='0.5' fill='%23C9B99A'%3EHD%3C/text%3E%3C/svg%3E";
+  const favicon = document.querySelector("link[rel='icon']");
+  const titleDefault = "Harshal Donarkar — AI Engineer";
+  const titleAway    = "Come back! 👀 — Harshal";
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden){
+      favicon.href = away;
+      document.title = titleAway;
+    } else {
+      favicon.href = active;
+      document.title = titleDefault;
+    }
+  });
+})();
+</script>
 <meta name="description" content="AI Engineer specialising in Deep Learning, Computer Vision & Production ML Systems. Based in Nagpur, India.">
 
 <!-- Open Graph / Social Preview -->
@@ -46,7 +68,10 @@ body{background:var(--paper);color:var(--ink);font-family:var(--f-mono);cursor:n
 #cursor.big{width:54px;height:54px;background:rgba(193,18,31,0.1)}
 [data-theme="dark"] #cursor{mix-blend-mode:normal;opacity:0.9}
 
-/* GRAIN */
+/* CURSOR TRAIL */
+.trail{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:background 0.4s}
+
+
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9990}
 
 /* STAGE — scroll snap container */
@@ -168,8 +193,96 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .pj-mn{font-family:var(--f-display);font-size:2.2rem;color:var(--red);line-height:1;letter-spacing:0.01em}
 .pj-ml{font-family:var(--f-mono);font-size:0.53rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tan)}
 
-/* ══════ P4: RESEARCH ══════ */
-#p4{width:620px;background:var(--blue);color:#F2EDE4}
+/* CASE STUDY DRAWER */
+.pj{cursor:pointer}
+.pj-expand-btn{font-family:var(--f-mono);font-size:0.53rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);background:none;border:none;cursor:pointer;padding:0;margin-top:0.4rem;display:inline-flex;align-items:center;gap:0.3rem;transition:gap 0.2s}
+.pj-expand-btn:hover{gap:0.5rem}
+.pj-expand-btn .exp-icon{display:inline-block;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);font-size:0.7rem}
+.pj.open .pj-expand-btn .exp-icon{transform:rotate(45deg)}
+.case-drawer{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.35s ease;opacity:0;grid-column:1/-1}
+.pj.open .case-drawer{max-height:400px;opacity:1}
+.case-inner{border-top:1px dashed var(--tag-border);margin-top:0.7rem;padding-top:0.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;transition:border-color 0.45s}
+.case-section-lbl{font-family:var(--f-mono);font-size:0.53rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.4rem}
+.case-section-body{font-family:var(--f-mono);font-size:0.6rem;line-height:1.7;color:var(--tag-color)}
+.case-metrics{display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.6rem}
+.case-metric{text-align:center}
+.case-metric-n{font-family:var(--f-display);font-size:1.8rem;color:var(--red);line-height:1}
+.case-metric-l{font-family:var(--f-mono);font-size:0.5rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--tan);margin-top:0.1rem}
+.case-stack{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
+.case-chip{font-family:var(--f-mono);font-size:0.53rem;padding:0.15rem 0.45rem;background:var(--faint);border:1px solid var(--tag-border);color:var(--tag-color)}
+
+/* ══════ P4: LIVE AI DEMO ══════ */
+#p4{width:860px;background:var(--ink);color:#F2EDE4;border-right:1px solid rgba(242,237,228,0.12)}
+[data-theme="dark"] #p4{background:#0a0909}
+.demo-in{padding:2.5rem;height:100%;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.demo-in .bg-num{color:rgba(242,237,228,0.03)}
+.demo-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--f-mono);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem}
+.demo-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.8s infinite;flex-shrink:0}
+.demo-title{font-family:var(--f-display);font-size:2.8rem;text-transform:uppercase;line-height:0.9;color:#F2EDE4;margin-bottom:0.4rem}
+.demo-sub{font-family:var(--f-serif);font-size:0.95rem;font-style:italic;color:rgba(242,237,228,0.4);margin-bottom:1.5rem}
+.demo-tabs{display:flex;gap:0;margin-bottom:1.2rem;border:1px solid rgba(242,237,228,0.12)}
+.demo-tab{font-family:var(--f-mono);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.45rem 1rem;background:transparent;border:none;color:rgba(242,237,228,0.4);cursor:pointer;transition:all 0.2s;flex:1;text-align:center}
+.demo-tab.active{background:var(--red);color:#fff}
+.demo-tab:hover:not(.active){background:rgba(242,237,228,0.06);color:#F2EDE4}
+.demo-input-wrap{position:relative;margin-bottom:0.8rem;flex-shrink:0}
+.demo-textarea{width:100%;background:rgba(242,237,228,0.04);border:1px solid rgba(242,237,228,0.14);padding:0.85rem 1rem;font-family:var(--f-mono);font-size:0.68rem;color:#F2EDE4;outline:none;resize:none;height:110px;line-height:1.65;transition:border-color 0.2s}
+.demo-textarea::placeholder{color:rgba(242,237,228,0.2)}
+.demo-textarea:focus{border-color:var(--red)}
+.demo-char{position:absolute;bottom:0.5rem;right:0.75rem;font-family:var(--f-mono);font-size:0.5rem;color:rgba(242,237,228,0.2)}
+.demo-controls{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap}
+.demo-run{font-family:var(--f-mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.55rem 1.4rem;background:var(--red);color:#fff;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s;flex-shrink:0}
+.demo-run:hover:not(:disabled){background:#F2EDE4;color:var(--ink);transform:translateY(-2px)}
+.demo-run:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.demo-run svg{width:13px;height:13px;fill:currentColor}
+.demo-presets{display:flex;gap:0.4rem;flex-wrap:wrap}
+.demo-preset{font-family:var(--f-mono);font-size:0.52rem;letter-spacing:0.06em;padding:0.28rem 0.6rem;background:transparent;border:1px solid rgba(242,237,228,0.14);color:rgba(242,237,228,0.45);cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.demo-preset:hover{border-color:var(--red);color:#F2EDE4}
+.demo-output{flex:1;background:rgba(242,237,228,0.03);border:1px solid rgba(242,237,228,0.08);padding:0.9rem 1rem;overflow-y:auto;min-height:0;position:relative}
+.demo-output-placeholder{font-family:var(--f-serif);font-size:0.9rem;font-style:italic;color:rgba(242,237,228,0.18);display:flex;align-items:center;justify-content:center;height:100%;text-align:center;line-height:1.6}
+.demo-output-content{font-family:var(--f-mono);font-size:0.66rem;line-height:1.75;color:rgba(242,237,228,0.8);display:none}
+.demo-output-content.visible{display:block}
+.sentiment-row{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid rgba(242,237,228,0.08)}
+.sentiment-chip{font-family:var(--f-mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid}
+.sentiment-chip.pos{color:#4ade80;border-color:#4ade80;background:rgba(74,222,128,0.07)}
+.sentiment-chip.neg{color:#f87171;border-color:#f87171;background:rgba(248,113,113,0.07)}
+.sentiment-chip.neu{color:#94a3b8;border-color:#94a3b8;background:rgba(148,163,184,0.07)}
+.demo-typing{display:none;align-items:center;gap:0.4rem;font-family:var(--f-mono);font-size:0.58rem;color:rgba(242,237,228,0.35);padding:0.5rem 0}
+.demo-typing.active{display:flex}
+.typing-dot{width:4px;height:4px;border-radius:50%;background:var(--red);animation:typingBounce 1.2s infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.demo-footer-note{font-family:var(--f-mono);font-size:0.5rem;color:rgba(242,237,228,0.18);margin-top:0.6rem;line-height:1.5;flex-shrink:0}
+.demo-footer-note a{color:rgba(242,237,228,0.3);text-decoration:none;border-bottom:1px solid rgba(242,237,228,0.15)}
+
+/* ══════ P5: WRITING / BLOG ══════ */
+#p5{width:820px;background:var(--paper)}
+.blog-in{padding:2.5rem;height:100%;display:flex;flex-direction:column;position:relative}
+.blog-list{flex:1;display:flex;flex-direction:column;gap:0;justify-content:center;position:relative;z-index:1}
+.post{border-top:1px solid var(--ink);padding:1.1rem 0;display:grid;grid-template-columns:1fr 160px;gap:1.5rem;cursor:pointer;transition:background 0.2s,padding 0.2s,border-color 0.45s;position:relative}
+.post:last-child{border-bottom:1px solid var(--ink)}
+.post:hover{background:var(--faint);padding-left:0.8rem;padding-right:0.8rem;margin:0 -0.8rem}
+.post:hover .post-arrow{transform:translateX(4px)}
+.post-meta{display:flex;align-items:center;gap:0.7rem;margin-bottom:0.3rem;flex-wrap:wrap}
+.post-cat{font-family:var(--f-mono);font-size:0.53rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.12rem 0.4rem;border:1px solid var(--red);color:var(--red)}
+.post-date{font-family:var(--f-mono);font-size:0.53rem;color:var(--tan)}
+.post-read{font-family:var(--f-mono);font-size:0.53rem;color:var(--tan)}
+.post-title{font-family:var(--f-serif);font-size:1.05rem;font-weight:700;line-height:1.3;margin-bottom:0.3rem;color:var(--ink)}
+.post-excerpt{font-family:var(--f-mono);font-size:0.6rem;line-height:1.65;color:var(--tag-color);font-weight:300}
+.post-tags{display:flex;flex-wrap:wrap;gap:0.25rem;margin-top:0.5rem}
+.post-tag{font-family:var(--f-mono);font-size:0.52rem;padding:0.1rem 0.38rem;background:var(--tag-bg);border:1px solid var(--tag-border);color:var(--tag-color)}
+.post-ri{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;padding:0.15rem 0}
+.post-num{font-family:var(--f-display);font-size:3.5rem;color:var(--bg-num);line-height:1;user-select:none}
+.post-arrow{font-family:var(--f-mono);font-size:0.75rem;color:var(--red);transition:transform 0.2s;align-self:flex-end}
+/* Writing footer — newsletter CTA */
+.blog-footer{margin-top:auto;padding-top:1.2rem;border-top:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;transition:border-color 0.45s}
+.blog-footer-l{font-family:var(--f-serif);font-size:0.95rem;font-style:italic;font-weight:300;color:var(--tag-color)}
+.blog-footer-l strong{font-style:normal;font-weight:700;color:var(--ink)}
+.btn-sub{font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1.1rem;background:transparent;border:1px solid var(--ink);color:var(--ink);cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem}
+.btn-sub:hover{background:var(--ink);color:var(--paper)}
+
+/* ══════ P5: RESEARCH ══════ */
+#p6{width:620px;background:var(--blue);color:#F2EDE4}
 .res-in{padding:2.5rem;height:100%;display:flex;flex-direction:column}
 .pt-inv{font-family:var(--f-display);font-size:3.2rem;letter-spacing:0.01em;text-transform:uppercase;line-height:0.9;color:#F2EDE4;margin-bottom:1.5rem}
 .pl-inv{font-family:var(--f-mono);font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(242,237,228,0.4);margin-bottom:0.4rem}
@@ -190,7 +303,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .pa-v{font-family:var(--f-mono);font-size:0.53rem;color:rgba(242,237,228,0.3)}
 
 /* ══════ P5: EDUCATION ══════ */
-#p5{width:600px;background:var(--faint)}
+#p7{width:600px;background:var(--faint)}
 .edu-in{padding:2.5rem;height:100%;display:flex;flex-direction:column}
 .edu-b{padding:1.2rem 0;border-bottom:1px solid var(--ink);transition:border-color 0.45s}
 .edu-b:first-of-type{border-top:1px solid var(--ink);margin-top:1.2rem}
@@ -218,8 +331,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .lead-yr{font-family:var(--f-mono);font-size:0.58rem;color:var(--red);white-space:nowrap}
 
 /* ══════ P6: CONTACT + FORM ══════ */
-#p6{width:100vw;background:var(--ink);color:#F2EDE4;border-right:none}
-[data-theme="dark"] #p6{background:#0a0909}
+#p8{width:100vw;background:var(--ink);color:#F2EDE4;border-right:none}
+[data-theme="dark"] #p8{background:#0a0909}
 .con-in{height:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0;position:relative}
 .con-left{padding:4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(242,237,228,0.1)}
 .con-ey{font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(242,237,228,0.3);margin-bottom:1.5rem}
@@ -271,6 +384,28 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .sdot{width:5px;height:5px;border-radius:50%;border:1px solid var(--ink);background:transparent;cursor:pointer;transition:all 0.25s;opacity:0.4}
 .sdot.on{background:var(--red);border-color:var(--red);opacity:1;transform:scale(1.3)}
 
+/* BACK TO START BUTTON */
+#back-to-start{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;
+  width:44px;height:44px;background:var(--red);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transform:translateY(12px) rotate(-90deg);
+  transition:opacity 0.35s,transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+#back-to-start.visible{opacity:1;pointer-events:auto;transform:translateY(0) rotate(-90deg)}
+#back-to-start:hover{background:var(--ink);transform:translateY(-3px) rotate(-90deg) scale(1.08)}
+#back-to-start svg{width:18px;height:18px;fill:#fff}
+/* tooltip */
+#back-to-start::before{
+  content:'Back to start';
+  position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+  font-family:var(--f-mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;
+  white-space:nowrap;background:var(--ink);color:var(--paper);padding:0.3rem 0.6rem;
+  opacity:0;transition:opacity 0.2s;pointer-events:none;
+}
+#back-to-start:hover::before{opacity:1}
+
 /* MOBILE */
 @media(max-width:768px){
   html,body{overflow:auto;height:auto}
@@ -292,6 +427,164 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   .mast-top{padding:1rem 1.5rem}
   .hero-actions{opacity:1;animation:none}
 }
+
+/* ══════════════════════════════════
+   PRINT STYLESHEET
+   Ctrl+P / Cmd+P → clean A4 resume
+══════════════════════════════════ */
+@media print {
+  /* Reset layout for print */
+  *,*::before,*::after { box-sizing: border-box !important }
+
+  :root {
+    --paper: #ffffff;
+    --ink: #000000;
+    --red: #C1121F;
+    --tan: #888880;
+    --faint: #f5f5f5;
+    --muted: #333333;
+    --tag-color: #555555;
+    --tag-border: #cccccc;
+  }
+
+  html, body {
+    overflow: visible !important;
+    height: auto !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+    cursor: auto !important;
+  }
+
+  /* Hide all interactive chrome */
+  #cursor, #progress, #sidx, #snap-dots,
+  #fnav, #theme-toggle, #back-to-start,
+  .trail, body::after, .hint,
+  .building-badge, #tw-cursor,
+  .btn-resume, .hero-actions,
+  .con-right, .con-links,
+  .pj-gh { display: none !important }
+
+  /* Unroll the horizontal stage into vertical pages */
+  #stage {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .panel {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    border-right: none !important;
+    border-bottom: 2px solid #000 !important;
+    page-break-after: always;
+    break-after: page;
+    padding-bottom: 1rem;
+  }
+
+  /* Don't break last panel */
+  #p6 { page-break-after: avoid; break-after: avoid; border-bottom: none !important; }
+
+  /* Hero panel */
+  #p0 { background: #fff !important }
+  .mast-rule { height: 2px; background: #000 !important }
+  .mast-top {
+    display: flex !important;
+    padding: 0.5rem 1rem !important;
+    border-bottom: 1px solid #000 !important;
+  }
+  .hero-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+    padding: 1rem !important;
+    gap: 1rem;
+  }
+  .hero-main { border-right: 1px solid #ccc !important; padding-right: 1rem }
+  .hero-name { font-size: 5rem !important; opacity: 1 !important; animation: none !important }
+  .hero-role { font-size: 1rem !important }
+  .hero-side { display: flex !important; padding: 0 0 0 1rem !important }
+  .sb { opacity: 1 !important; animation: none !important; padding: 0.6rem 0 !important }
+  .stat-n { font-size: 2rem !important }
+
+  /* Experience */
+  #p1 { background: #fff !important }
+  .p-in { padding: 1rem !important; height: auto !important }
+  .bg-num { display: none !important }
+  .exp-ul li { font-size: 9pt !important }
+
+  /* Skills */
+  #p2 { background: #f9f9f9 !important }
+  .rot-bg { display: none !important }
+  .pfill { width: attr(data-w) !important; transition: none !important }
+  .sk-tag { background: #f0f0f0 !important; border-color: #ccc !important; color: #333 !important }
+
+  /* Projects */
+  #p3 { background: #fff !important }
+  .pj { grid-template-columns: 2fr 0.5fr !important }
+  .pj-mn { font-size: 1.6rem !important }
+  .pj:hover { background: transparent !important; padding-left: 0 !important; margin: 0 !important }
+
+  /* Research */
+  #p4 {
+    background: #1a2a4a !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Education */
+  #p5 { background: #f5f5f5 !important }
+  .edu-badge {
+    background: #000 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Contact — simplified for print */
+  #p6 {
+    background: #111 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .con-in { display: block !important; padding: 2rem !important }
+  .con-left { border-right: none !important; padding: 0 !important }
+  .con-big { font-size: 3rem !important }
+
+  /* Print header on every page */
+  @page {
+    size: A4;
+    margin: 12mm 15mm;
+    @top-right {
+      content: "Harshal Donarkar — AI Engineer";
+      font-family: monospace;
+      font-size: 8pt;
+      color: #999;
+    }
+    @bottom-center {
+      content: "harshaldonarkar.dev  ·  © 2025 Harshal Naresh Donarkar";
+      font-family: monospace;
+      font-size: 7pt;
+      color: #bbb;
+    }
+  }
+
+  /* Force link URLs to show in print */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 7pt;
+    color: #888;
+    font-family: monospace;
+  }
+  /* But not for nav/icon links */
+  .cl::after, .pj-gh::after, .fn::after { content: none !important }
+}
 </style>
 </head>
 <body>
@@ -307,10 +600,17 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="sdot" onclick="goTo(1)" title="Experience"></div>
   <div class="sdot" onclick="goTo(2)" title="Skills"></div>
   <div class="sdot" onclick="goTo(3)" title="Projects"></div>
-  <div class="sdot" onclick="goTo(4)" title="Research"></div>
-  <div class="sdot" onclick="goTo(5)" title="Education"></div>
-  <div class="sdot" onclick="goTo(6)" title="Contact"></div>
+  <div class="sdot" onclick="goTo(4)" title="Live AI Demo"></div>
+  <div class="sdot" onclick="goTo(5)" title="Writing"></div>
+  <div class="sdot" onclick="goTo(6)" title="Research"></div>
+  <div class="sdot" onclick="goTo(7)" title="Education"></div>
+  <div class="sdot" onclick="goTo(8)" title="Contact"></div>
 </div>
+
+<!-- BACK TO START -->
+<button id="back-to-start" onclick="goTo(0)" aria-label="Back to start">
+  <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+</button>
 
 <!-- THEME TOGGLE -->
 <button id="theme-toggle" onclick="toggleTheme()">
@@ -324,9 +624,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <button class="fn" onclick="goTo(1)">01 — Experience</button>
   <button class="fn" onclick="goTo(2)">02 — Skills</button>
   <button class="fn" onclick="goTo(3)">03 — Projects</button>
-  <button class="fn" onclick="goTo(4)">04 — Research</button>
-  <button class="fn" onclick="goTo(5)">05 — Education</button>
-  <button class="fn cta" onclick="goTo(6)">06 — Contact →</button>
+  <button class="fn" onclick="goTo(4)" style="color:var(--red);border-color:var(--red)">04 — Live AI Demo ✦</button>
+  <button class="fn" onclick="goTo(5)">05 — Writing</button>
+  <button class="fn" onclick="goTo(6)">06 — Research</button>
+  <button class="fn" onclick="goTo(7)">07 — Education</button>
+  <button class="fn cta" onclick="goTo(8)">08 — Contact →</button>
+  <button class="fn" onclick="window.print()" style="margin-top:0.4rem;border-top:1px solid var(--fnav-border)">⎙ Print / Save PDF</button>
 </div>
 
 <div id="stage">
@@ -431,60 +734,295 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="pl">Projects</div>
       <div class="pt">Things<br>I Built</div>
       <div class="pj-list">
-        <div class="pj">
+
+        <!-- Project 1 -->
+        <div class="pj" id="pj0">
           <div>
             <div class="pj-meta"><span class="pj-tag">Featured</span><span class="pj-date">APR 2025</span></div>
             <div class="pj-ti">DevBridge — AI Pre-Dev Automation</div>
             <div class="pj-de">Auto-generates project docs using GPT-4 & Claude. Interactive D3.js visualizations for scope analysis and tech recommendations.</div>
             <div class="pj-foot">
               <span class="pj-st">GPT-4 · Claude · D3.js · Node.js</span>
-              <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pj0',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Pre-development documentation — architecture decisions, scope breakdowns, tech stack rationale — was eating 3–5 days per project at the agency. Engineers were writing the same boilerplate from scratch every time.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">A multimodal AI pipeline that ingests a project brief, reasons over it using GPT-4 and Claude in parallel, and outputs structured docs with D3.js dependency graphs and a recommended stack. One prompt → full pre-dev package.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">65%</div><div class="case-metric-l">Time saved</div></div>
+                    <div class="case-metric"><div class="case-metric-n">2</div><div class="case-metric-l">LLMs in parallel</div></div>
+                    <div class="case-metric"><div class="case-metric-n">∞</div><div class="case-metric-l">Scalable</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">GPT-4</span><span class="case-chip">Claude API</span><span class="case-chip">Node.js</span><span class="case-chip">D3.js</span><span class="case-chip">REST</span><span class="case-chip">JSON Schema</span></div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pj-ri"><div class="pj-mn" data-count="65" data-suffix="%">0%</div><div class="pj-ml">faster docs</div></div>
         </div>
-        <div class="pj">
+
+        <!-- Project 2 -->
+        <div class="pj" id="pj1">
           <div>
             <div class="pj-meta"><span class="pj-tag">AI / EdTech</span><span class="pj-date">MAR 2025</span></div>
             <div class="pj-ti">Multimodal AI Video Summarizer</div>
             <div class="pj-de">Timestamp-based search in educational videos. 20 multilingual revision videos improving student retention.</div>
-            <div class="pj-foot"><span class="pj-st">Whisper · OCR · Docker · K8s</span><a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a></div>
+            <div class="pj-foot">
+              <span class="pj-st">Whisper · OCR · Docker · K8s</span>
+              <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pj1',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Students couldn't find specific moments in long lecture videos. Scrubbing through 2-hour recordings to find a 30-second explanation was killing retention and study efficiency.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">Whisper for transcription + Tesseract & EasyOCR for slide text extraction, combined into a timestamp-indexed search engine. Students type a concept, get the exact minute and a summary. Containerised with Docker & K8s for scale.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">30%</div><div class="case-metric-l">Search time cut</div></div>
+                    <div class="case-metric"><div class="case-metric-n">20</div><div class="case-metric-l">Videos indexed</div></div>
+                    <div class="case-metric"><div class="case-metric-n">5+</div><div class="case-metric-l">Languages</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">Whisper</span><span class="case-chip">Tesseract</span><span class="case-chip">EasyOCR</span><span class="case-chip">Docker</span><span class="case-chip">Kubernetes</span><span class="case-chip">Python</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="pj-ri"><div class="pj-mn" data-count="30" data-suffix="%">0%</div><div class="pj-ml">search cut</div></div>
         </div>
-        <div class="pj">
+
+        <!-- Project 3 -->
+        <div class="pj" id="pj2">
           <div>
             <div class="pj-meta"><span class="pj-tag">Healthcare AI</span><span class="pj-date">AUG 2024</span></div>
             <div class="pj-ti">Skin Cancer Prediction Model</div>
             <div class="pj-de">CNN with 80%+ TPR on ROC curves. Flask web app with Figma-designed UI, cutting request latency by 150ms.</div>
-            <div class="pj-foot"><span class="pj-st">TensorFlow · Keras · Flask · CNN</span><a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a></div>
+            <div class="pj-foot">
+              <span class="pj-st">TensorFlow · Keras · Flask · CNN</span>
+              <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pj2',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Early skin cancer detection dramatically improves survival rates, but dermatologist access is limited in rural India. A reliable, accessible screening tool could bridge that gap.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">A custom CNN trained on the HAM10000 dataset, optimised for high TPR to minimise false negatives — the critical failure mode in medical diagnosis. Deployed as a Flask web app with a Figma-designed UI, reducing request latency by 150ms through async inference.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">80%+</div><div class="case-metric-l">TPR on ROC</div></div>
+                    <div class="case-metric"><div class="case-metric-n">150ms</div><div class="case-metric-l">Latency cut</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">TensorFlow</span><span class="case-chip">Keras</span><span class="case-chip">Flask</span><span class="case-chip">CNN</span><span class="case-chip">HAM10000</span><span class="case-chip">Figma</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="pj-ri"><div class="pj-mn" data-count="80" data-suffix="%+">0%</div><div class="pj-ml">TPR on ROC</div></div>
         </div>
-        <div class="pj">
+
+        <!-- Project 4 -->
+        <div class="pj" id="pj3">
           <div>
             <div class="pj-meta"><span class="pj-tag">Healthcare AI</span><span class="pj-date">FEB 2024</span></div>
             <div class="pj-ti">Breast Cancer Prediction System</div>
             <div class="pj-de">97% accuracy from 10,000+ patient data points. Advanced normalization reduced data skewness by 18%.</div>
-            <div class="pj-foot"><span class="pj-st">Python · SciKit-Learn · TensorFlow</span><a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a></div>
+            <div class="pj-foot">
+              <span class="pj-st">Python · SciKit-Learn · TensorFlow</span>
+              <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pj3',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Breast cancer prediction models often overfit or underperform on skewed clinical datasets. Achieving high accuracy without sacrificing sensitivity required careful feature engineering and normalisation.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">Trained on 10,000+ patient records. Applied advanced normalisation techniques that reduced data skewness by 18%, improving generalisation. Compared SciKit-Learn ensemble methods against TensorFlow deep models, selecting the best-performing architecture per metric.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">97%</div><div class="case-metric-l">Accuracy</div></div>
+                    <div class="case-metric"><div class="case-metric-n">18%</div><div class="case-metric-l">Skewness reduced</div></div>
+                    <div class="case-metric"><div class="case-metric-n">10K+</div><div class="case-metric-l">Data points</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">Python</span><span class="case-chip">SciKit-Learn</span><span class="case-chip">TensorFlow</span><span class="case-chip">Pandas</span><span class="case-chip">NumPy</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="pj-ri"><div class="pj-mn" data-count="97" data-suffix="%">0%</div><div class="pj-ml">accuracy</div></div>
         </div>
-        <div class="pj">
+
+        <!-- Project 5 -->
+        <div class="pj" id="pj4">
           <div>
             <div class="pj-meta"><span class="pj-tag">Web Scraping</span><span class="pj-date">DEC 2023</span></div>
             <div class="pj-ti">Optimised Job Search Engine</div>
             <div class="pj-de">Location-based filters, skill requirements, experience thresholds. 15% data efficiency gain.</div>
-            <div class="pj-foot"><span class="pj-st">BeautifulSoup · Selenium · Python</span><a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a></div>
+            <div class="pj-foot">
+              <span class="pj-st">BeautifulSoup · Selenium · Python</span>
+              <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pj4',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Existing job boards surface irrelevant listings — wrong city, wrong experience level, wrong stack. Fresh graduates waste hours filtering noise instead of applying to real matches.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">A Selenium + BeautifulSoup scraper with layered filters: location radius, required skills intersection, experience bracket, and salary range. Results ranked by match score. Data deduplication and normalisation improved pipeline efficiency by 15%.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">15%</div><div class="case-metric-l">Efficiency gain</div></div>
+                    <div class="case-metric"><div class="case-metric-n">4</div><div class="case-metric-l">Filter layers</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">Python</span><span class="case-chip">BeautifulSoup</span><span class="case-chip">Selenium</span><span class="case-chip">Pandas</span><span class="case-chip">RegEx</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="pj-ri"><div class="pj-mn" data-count="15" data-suffix="%">0%</div><div class="pj-ml">efficiency</div></div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- ══ P4: RESEARCH ══ -->
+  <!-- ══ P4: LIVE AI DEMO ══ -->
   <div class="panel" id="p4">
+    <div class="demo-in">
+      <div class="bg-num" style="color:rgba(242,237,228,0.03)">04</div>
+      <div class="demo-badge"><span class="demo-badge-dot"></span> Live Demo — Powered by Claude AI</div>
+      <div class="demo-title">Try My<br>AI Live</div>
+      <div class="demo-sub">Paste any text. Watch the model think. This is real inference, not a mock.</div>
+
+      <div class="demo-tabs">
+        <button class="demo-tab active" onclick="setDemoMode('summarise',this)">Summarise</button>
+        <button class="demo-tab" onclick="setDemoMode('sentiment',this)">Sentiment</button>
+        <button class="demo-tab" onclick="setDemoMode('keypoints',this)">Key Points</button>
+        <button class="demo-tab" onclick="setDemoMode('eli5',this)">ELI5</button>
+      </div>
+
+      <div class="demo-input-wrap">
+        <textarea class="demo-textarea" id="demoInput" placeholder="Paste an article, paper abstract, paragraph — anything. Try the preset samples below." oninput="updateCharCount(this)" maxlength="1200"></textarea>
+        <span class="demo-char" id="demoChar">0 / 1200</span>
+      </div>
+
+      <div class="demo-controls">
+        <button class="demo-run" id="demoBtn" onclick="runDemo()">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Run AI
+        </button>
+        <div class="demo-presets">
+          <button class="demo-preset" onclick="loadPreset('ml')">ML paper abstract</button>
+          <button class="demo-preset" onclick="loadPreset('news')">Tech news article</button>
+          <button class="demo-preset" onclick="loadPreset('review')">Product review</button>
+        </div>
+      </div>
+
+      <div class="demo-typing" id="demoTyping">
+        <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+        <span style="margin-left:0.3rem">Claude is thinking...</span>
+      </div>
+
+      <div class="demo-output" id="demoOutput">
+        <div class="demo-output-placeholder" id="demoPlaceholder">
+          Your result will appear here.<br>Select a mode, paste text, and hit Run AI.
+        </div>
+        <div class="demo-output-content" id="demoResult"></div>
+      </div>
+
+      <div class="demo-footer-note">
+        Inference via <a href="https://groq.com" target="_blank">Groq</a> · llama-3.1-8b-instant · Proxied via Cloudflare Worker · Built by Harshal Donarkar · Max 1200 chars
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ P5: WRITING ══ -->
+  <div class="panel" id="p5">
+    <div class="bg-num">05</div>
+    <div class="blog-in">
+      <div class="pl">Writing</div>
+      <div class="pt">Thoughts<br>&amp; Takes</div>
+      <div class="blog-list">
+
+        <div class="post" onclick="window.open('https://medium.com/@harshaldonarkar','_blank')">
+          <div>
+            <div class="post-meta"><span class="post-cat">Deep Learning</span><span class="post-date">Feb 2025</span><span class="post-read">· 6 min read</span></div>
+            <div class="post-title">Why Whisper Is the Most Underrated Model in Production AI</div>
+            <div class="post-excerpt">Most engineers reach for Whisper for transcription and stop there. After deploying it inside an EdTech platform handling multilingual video at scale, I found it does a lot more — if you know where to push.</div>
+            <div class="post-tags"><span class="post-tag">Whisper</span><span class="post-tag">ASR</span><span class="post-tag">MLOps</span><span class="post-tag">Production</span></div>
+          </div>
+          <div class="post-ri"><div class="post-num">01</div><div class="post-arrow">→</div></div>
+        </div>
+
+        <div class="post" onclick="window.open('https://medium.com/@harshaldonarkar','_blank')">
+          <div>
+            <div class="post-meta"><span class="post-cat">Healthcare AI</span><span class="post-date">Nov 2024</span><span class="post-read">· 8 min read</span></div>
+            <div class="post-title">Building a Cancer Classifier with 97% Accuracy — What the Metric Doesn't Tell You</div>
+            <div class="post-excerpt">Accuracy sounds great on paper. But when your false negatives are missed cancer diagnoses, the real story is in the ROC curve, TPR, and what happens at the decision boundary.</div>
+            <div class="post-tags"><span class="post-tag">CNN</span><span class="post-tag">Healthcare</span><span class="post-tag">XAI</span><span class="post-tag">TensorFlow</span></div>
+          </div>
+          <div class="post-ri"><div class="post-num">02</div><div class="post-arrow">→</div></div>
+        </div>
+
+        <div class="post" onclick="window.open('https://medium.com/@harshaldonarkar','_blank')">
+          <div>
+            <div class="post-meta"><span class="post-cat">LLMs</span><span class="post-date">Sep 2024</span><span class="post-read">· 5 min read</span></div>
+            <div class="post-title">GPT-4 vs Claude for Code Generation: A Practical Comparison from the Trenches</div>
+            <div class="post-excerpt">I've used both extensively in production tooling for DevBridge. Here's what I actually found — not benchmarks, but real behaviour on messy, ambiguous, real-world prompts.</div>
+            <div class="post-tags"><span class="post-tag">GPT-4</span><span class="post-tag">Claude</span><span class="post-tag">Prompt Eng.</span></div>
+          </div>
+          <div class="post-ri"><div class="post-num">03</div><div class="post-arrow">→</div></div>
+        </div>
+
+        <div class="post" onclick="window.open('https://medium.com/@harshaldonarkar','_blank')">
+          <div>
+            <div class="post-meta"><span class="post-cat">DevOps</span><span class="post-date">Jul 2024</span><span class="post-read">· 7 min read</span></div>
+            <div class="post-title">Docker + Kubernetes for ML Engineers: The Setup I Wish I Had from Day One</div>
+            <div class="post-excerpt">Containerising ML models is not the same as containerising web apps. Here's the specific config, gotchas, and workflow that cut our deployment time by 50%.</div>
+            <div class="post-tags"><span class="post-tag">Docker</span><span class="post-tag">Kubernetes</span><span class="post-tag">CI/CD</span></div>
+          </div>
+          <div class="post-ri"><div class="post-num">04</div><div class="post-arrow">→</div></div>
+        </div>
+
+      </div>
+      <div class="blog-footer">
+        <div class="blog-footer-l">More on <strong>Medium &amp; Dev.to</strong><br>New posts every few weeks on AI, MLOps &amp; engineering.</div>
+        <a href="https://medium.com/@harshaldonarkar" target="_blank" rel="noopener" class="btn-sub">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          Read on Medium →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ P6: RESEARCH ══ -->
+  <div class="panel" id="p6">
     <div class="res-in">
       <div class="pl-inv">Research</div>
       <div class="pt-inv">What I'm<br>Curious<br>About</div>
@@ -503,9 +1041,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </div>
   </div>
 
-  <!-- ══ P5: EDUCATION ══ -->
-  <div class="panel" id="p5">
-    <div class="bg-num">05</div>
+  <!-- ══ P7: EDUCATION ══ -->
+  <div class="panel" id="p7">
+    <div class="bg-num">06</div>
     <div class="edu-in">
       <div class="pl">Background</div>
       <div class="pt" style="font-size:2.8rem">Education<br>&amp; Beyond</div>
@@ -530,20 +1068,20 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </div>
   </div>
 
-  <!-- ══ P6: CONTACT ══ -->
-  <div class="panel" id="p6">
+  <!-- ══ P8: CONTACT ══ -->
+  <div class="panel" id="p8">
     <div class="con-in">
       <div class="con-left">
         <div class="con-ey">10 — Let's talk</div>
         <div class="con-big">Let's Build<br>Something<br><span>Incredible.</span></div>
         <div class="con-tag">Open to AI roles, research collaborations, and projects that push the boundary of what's possible.</div>
         <div class="con-links">
-          <a href="mailto:harshaldonarkar@gmail.com" class="cl"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a>
+          <a href="/cdn-cgi/l/email-protection#aac2cbd8d9c2cbc6cec5c4cbd8c1cbd8eacdc7cbc3c684c9c5c7" class="cl"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a>
           <a href="https://www.linkedin.com/in/harshal-donarkar" target="_blank" rel="noopener" class="cl"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>LinkedIn</a>
           <a href="https://github.com/harshaldonarkar" target="_blank" rel="noopener" class="cl"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>GitHub</a>
           <a href="#" class="cl" onclick="downloadResume(event)"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Resume</a>
         </div>
-        <a href="mailto:harshaldonarkar@gmail.com" class="con-mail">harshaldonarkar@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#bcd4ddcecfd4ddd0d8d3d2ddced7ddcefcdbd1ddd5d092dfd3d1" class="con-mail"><span class="__cf_email__" data-cfemail="711910030219101d151e1f10031a100331161c10181d5f121e1c">[email&#160;protected]</span></a>
       </div>
       <!-- CONTACT FORM -->
       <div class="con-right">
@@ -576,7 +1114,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 </div><!-- /stage -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── WEB AUDIO: subtle click on panel snap ───
 let audioCtx = null;
 function playSnap(){
@@ -645,7 +1183,162 @@ document.querySelectorAll('a,button,.pj,.ri,.sk-tag').forEach(el=>{
   el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
 });
 
-// ─── HORIZONTAL SCROLL ENGINE ───
+// ─── LIVE AI DEMO ───
+let demoMode = 'summarise';
+
+// ← Replace this with your Cloudflare Worker URL after deploying
+const AI_PROXY_URL = 'portfolio-ai.harshaldonarkar.workers.dev';
+
+const presets = {
+  ml: `Attention mechanisms have transformed natural language processing by allowing models to dynamically weight the relevance of different input tokens when generating each output token. Unlike recurrent neural networks that process sequences step by step, transformers process entire sequences in parallel through self-attention, computing relationships between all token pairs simultaneously. This architectural shift enabled training on much larger datasets and led to breakthroughs in language understanding, translation, and generation tasks.`,
+  news: `OpenAI has announced a new series of reasoning models designed to spend more time thinking before responding to complex questions. The models, which use a chain-of-thought approach, outperform previous versions on benchmarks involving mathematics, coding, and scientific reasoning. The company claims these models represent a significant step toward AI systems that can tackle multi-step problems requiring careful analysis rather than pattern matching from training data.`,
+  review: `I've been using this mechanical keyboard for three months now and my thoughts are mixed. The typing feel is absolutely fantastic — the tactile feedback is crisp and the sound is satisfying without being obnoxious. Build quality is solid, full aluminium chassis, no flex whatsoever. However the software is genuinely terrible. Remapping keys requires a clunky app that crashes regularly and the RGB lighting profiles don't save properly after unplugging. At this price point I expect better. If you don't care about software customisation it's brilliant. If you do, look elsewhere.`
+};
+
+const prompts = {
+  summarise: text => `Summarise the following text in 2-3 concise sentences. Be direct and factual. No preamble.\n\n${text}`,
+  sentiment: text => `Analyse the sentiment of the following text. Return: 1) Overall sentiment (Positive/Negative/Neutral/Mixed), 2) Confidence (High/Medium/Low), 3) Key emotional signals (2-3 phrases), 4) One sentence explanation. Be concise.\n\n${text}`,
+  keypoints: text => `Extract the 3-5 most important key points from the following text. Format as a numbered list. Each point should be one clear sentence. No preamble.\n\n${text}`,
+  eli5: text => `Explain the following text as if I'm 10 years old. Use simple words, a short analogy if helpful, and keep it to 3-4 sentences.\n\n${text}`
+};
+
+function setDemoMode(mode, btn) {
+  demoMode = mode;
+  document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  clearOutput();
+}
+
+function loadPreset(key) {
+  document.getElementById('demoInput').value = presets[key];
+  updateCharCount(document.getElementById('demoInput'));
+  clearOutput();
+}
+
+function updateCharCount(el) {
+  document.getElementById('demoChar').textContent = `${el.value.length} / 1200`;
+}
+
+function clearOutput() {
+  document.getElementById('demoPlaceholder').style.display = 'flex';
+  document.getElementById('demoResult').classList.remove('visible');
+  document.getElementById('demoResult').innerHTML = '';
+}
+
+function getSentimentClass(text) {
+  const lower = text.toLowerCase();
+  if (lower.includes('positive')) return 'pos';
+  if (lower.includes('negative')) return 'neg';
+  return 'neu';
+}
+
+async function runDemo() {
+  const input = document.getElementById('demoInput').value.trim();
+  if (!input) { document.getElementById('demoInput').focus(); return; }
+
+  if (AI_PROXY_URL.includes('YOUR-WORKER')) {
+    document.getElementById('demoPlaceholder').style.display = 'none';
+    document.getElementById('demoResult').classList.add('visible');
+    document.getElementById('demoResult').innerHTML = `<span style="color:#f87171">⚠ Worker URL not configured yet.<br><br>Deploy your Cloudflare Worker and paste your Worker URL into the <code>AI_PROXY_URL</code> variable in the JS. See README for instructions.</span>`;
+    return;
+  }
+
+  const btn = document.getElementById('demoBtn');
+  const typing = document.getElementById('demoTyping');
+  const placeholder = document.getElementById('demoPlaceholder');
+  const result = document.getElementById('demoResult');
+
+  btn.disabled = true;
+  btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;animation:spin 1s linear infinite"><path d="M12 4V2A10 10 0 002 12h2a8 8 0 018-8z"/></svg> Running...';
+  typing.classList.add('active');
+  placeholder.style.display = 'none';
+  result.classList.remove('visible');
+  result.innerHTML = '';
+
+  try {
+    const response = await fetch(AI_PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [{ role: 'user', content: prompts[demoMode](input) }]
+      })
+    });
+
+    const data = await response.json();
+    // Groq returns OpenAI-compatible format
+    const text = data.choices?.[0]?.message?.content || data.error || 'No response received.';
+
+    typing.classList.remove('active');
+    result.classList.add('visible');
+
+    // Stream-type the result character by character
+    let i = 0;
+    function typeChar() {
+      if (i < text.length) {
+        result.innerHTML = text.slice(0, i + 1).replace(/\n/g, '<br>');
+        if (demoMode === 'sentiment' && i === text.length - 1) {
+          result.innerHTML += `<div class="sentiment-row">
+            <span class="sentiment-chip ${getSentimentClass(text)}">${text.toLowerCase().includes('positive') ? '✓ Positive' : text.toLowerCase().includes('negative') ? '✗ Negative' : '— Neutral / Mixed'}</span>
+            <span style="font-family:var(--f-mono);font-size:0.52rem;color:rgba(242,237,228,0.25)">via Groq · llama-3.1-8b</span>
+          </div>`;
+        }
+        i++;
+        setTimeout(typeChar, 12);
+      }
+    }
+    typeChar();
+
+  } catch (err) {
+    typing.classList.remove('active');
+    result.classList.add('visible');
+    result.innerHTML = `<span style="color:#f87171">Error: ${err.message}.<br>Check your Worker URL and CORS settings.</span>`;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor"><path d="M8 5v14l11-7z"/></svg> Run AI';
+  }
+}
+
+// ─── CASE STUDY EXPANDABLES ───
+function toggleCase(id, e){
+  e.stopPropagation();
+  const pj = document.getElementById(id);
+  const isOpen = pj.classList.contains('open');
+  // Close all others first
+  document.querySelectorAll('.pj.open').forEach(el => el.classList.remove('open'));
+  if(!isOpen) pj.classList.add('open');
+  // Prevent horizontal scroll snap from firing during expand
+  clearTimeout(scrollTimer);
+}
+
+// ─── CURSOR TRAIL ───
+const trailCount = 5;
+const trails = Array.from({length: trailCount}, (_, i) => {
+  const el = document.createElement('div');
+  el.className = 'trail';
+  const size = 8 - i * 1.2;  // shrinks: 8, 6.8, 5.6, 4.4, 3.2
+  el.style.cssText = `width:${size}px;height:${size}px;background:var(--red);opacity:${0.35 - i*0.06}`;
+  document.body.appendChild(el);
+  return {el, x: window.innerWidth/2, y: window.innerHeight/2};
+});
+
+(function trailLoop(){
+  let px = cx, py = cy;
+  trails.forEach((t, i) => {
+    const lag = 0.28 - i * 0.04;   // each dot is slightly slower
+    t.x += (px - t.x) * lag;
+    t.y += (py - t.y) * lag;
+    t.el.style.left = t.x + 'px';
+    t.el.style.top  = t.y + 'px';
+    px = t.x; py = t.y;
+  });
+  requestAnimationFrame(trailLoop);
+})();
+
+// hide trail when cursor leaves window
+document.addEventListener('mouseleave', () => trails.forEach(t => t.el.style.opacity = '0'));
+document.addEventListener('mouseenter', (_, i) => trails.forEach((t, i) => t.el.style.opacity = 0.35 - i*0.06));
+
+
 const stage=document.getElementById('stage');
 const panels=[...document.querySelectorAll('.panel')];
 const progressEl=document.getElementById('progress');
@@ -740,6 +1433,13 @@ function runProf(){if(profDone)return;profDone=true;document.querySelectorAll('.
     sidxEl.textContent=String(ai).padStart(2,'0');
     navBtns.forEach((b,i)=>b.classList.toggle('on',i===ai));
     snapDots.forEach((d,i)=>d.classList.toggle('on',i===ai));
+
+    // Show/hide back-to-start button
+    const bts = document.getElementById('back-to-start');
+    if(bts){
+      if(ai === panels.length-1){ bts.classList.add('visible'); }
+      else { bts.classList.remove('visible'); }
+    }
   }
 
   const p2r=document.getElementById('p2').getBoundingClientRect();
