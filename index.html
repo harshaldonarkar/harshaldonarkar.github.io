@@ -1441,7 +1441,9 @@ function isInternalScroll(e){
 window.addEventListener('wheel',e=>{
   if(isInternalScroll(e)) return; // let inner scroll happen
   e.preventDefault();
-  setX(tgtX+e.deltaY*1.6);
+  // Normalise across deltaMode: 0=px (trackpad), 1=lines, 2=pages
+  const norm = e.deltaMode===1 ? e.deltaY*32 : e.deltaMode===2 ? e.deltaY*window.innerWidth : e.deltaY;
+  setX(tgtX+norm*1.6);
   scheduleSnap();
 },{passive:false});
 let tx0=0,ty0=0,tx0t=0;
@@ -1480,8 +1482,10 @@ let profDone=false;
 function runProf(){if(profDone)return;profDone=true;document.querySelectorAll('.pfill').forEach(f=>setTimeout(()=>{f.style.width=f.getAttribute('data-w')+'%'},200));}
 
 // ─── MAIN RENDER LOOP ───
-(function render(){
-  curX+=(tgtX-curX)*0.11;
+let _lastRaf=0;
+(function render(ts){
+  const dt=_lastRaf?Math.min((ts-_lastRaf)/(1000/60),4):1;_lastRaf=ts;
+  curX+=(tgtX-curX)*Math.min(1,0.11*dt);
   if(Math.abs(tgtX-curX)<0.5)curX=tgtX;
   stage.style.transform=`translateX(${-curX}px)`;
   progressEl.style.width=(totalW>0?(curX/totalW)*100:0)+'%';
@@ -1509,7 +1513,7 @@ function runProf(){if(profDone)return;profDone=true;document.querySelectorAll('.
   if(p3r.left<window.innerWidth*0.75)runCountUp();
 
   requestAnimationFrame(render);
-})();
+})(0);
 </script>
 </body>
 </html>
