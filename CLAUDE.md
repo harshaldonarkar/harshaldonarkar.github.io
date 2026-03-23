@@ -78,11 +78,15 @@ Three-font system via Google Fonts:
 
 ### Contact Form
 
-Powered by Formspree (zero backend). The form action URL in `index.html` needs `YOUR_FORM_ID` replaced with a real Formspree form ID.
+Powered by **Web3Forms** (`https://api.web3forms.com/submit`). The hidden `access_key` input in `index.html` must contain a valid Web3Forms access key. Form submission is handled by `handleForm(event)` in the script block.
+
+### PWA
+
+`manifest.json` and `sw.js` make the site installable. The service worker uses stale-while-revalidate for assets and network-first for API calls (web3forms, workers.dev). The cache name is `hd-portfolio-v1` — bump this in `sw.js` to force cache invalidation after significant updates.
 
 ## Deployment
 
-The site is deployed on Vercel. `vercel.json` sets security headers (CSP-adjacent, HSTS, X-Frame-Options, etc.). No build configuration is needed — Vercel serves `index.html` directly.
+The site is deployed on Vercel. `vercel.json` sets security headers (HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy, etc.). No build configuration is needed — Vercel serves `index.html` directly.
 
 GitHub Pages also works by enabling Pages from the `main` branch.
 
