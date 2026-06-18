@@ -891,7 +891,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <div class="exp-c">Academic Projects &amp; Research<span class="exp-loc">· RTMNU, Nagpur</span></div>
         <ul class="exp-ul">
           <li>Published 2 peer-reviewed papers in IJCNIS and IRJET on AI-powered healthcare diagnostics and intelligent job search systems.</li>
-          <li>Won 2nd Runner-Up at Hackengers Hackathon and Top 10 at National Hackathon 2K24 — both involving real-time AI pipeline development under pressure.</li>
+          <li>Won 2nd Runner-Up at Hackengers Hackathon.</li>
           <li>Served as Technical Head of the Coding Club — mentored <strong>30+</strong> students on deep learning, Python, and ML project workflows.</li>
         </ul>
       </div>
@@ -906,7 +906,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="pt panel-enter" style="font-size:2.8rem">Tools of<br>the Trade</div>
       <div class="sk-grid">
         <div class="sk-r"><span class="sk-ic">🧠</span><div class="sk-ri"><div class="sk-n">ML & Deep Learning</div><div class="sk-tags"><span class="sk-tag">TensorFlow</span><span class="sk-tag">PyTorch</span><span class="sk-tag">Keras</span><span class="sk-tag">SciKit-Learn</span><span class="sk-tag">CNNs</span><span class="sk-tag">Transformers</span></div></div></div>
-        <div class="sk-r"><span class="sk-ic">✦</span><div class="sk-ri"><div class="sk-n">LLMs & Frontier Models</div><div class="sk-tags"><span class="sk-tag">GPT-4o</span><span class="sk-tag">o3</span><span class="sk-tag">Claude 3.7</span><span class="sk-tag">Gemini 2.0</span><span class="sk-tag">Llama 3</span><span class="sk-tag">Mistral</span><span class="sk-tag">Groq</span></div></div></div>
+        <div class="sk-r"><span class="sk-ic">✦</span><div class="sk-ri"><div class="sk-n">LLMs & Frontier Models</div><div class="sk-tags"><span class="sk-tag">Claude</span><span class="sk-tag">GPT-5.5</span><span class="sk-tag">Gemini 3.1</span><span class="sk-tag">Llama 4</span><span class="sk-tag">Mistral</span><span class="sk-tag">Groq</span></div></div></div>
         <div class="sk-r"><span class="sk-ic">🔗</span><div class="sk-ri"><div class="sk-n">AI Engineering</div><div class="sk-tags"><span class="sk-tag">LangChain</span><span class="sk-tag">RAG</span><span class="sk-tag">Vector DBs</span><span class="sk-tag">Prompt Engineering</span><span class="sk-tag">Agents</span><span class="sk-tag">Function Calling</span></div></div></div>
         <div class="sk-r"><span class="sk-ic">⚡</span><div class="sk-ri"><div class="sk-n">Dev & Backend</div><div class="sk-tags"><span class="sk-tag">Python</span><span class="sk-tag">Node.js</span><span class="sk-tag">Flask</span><span class="sk-tag">FastAPI</span><span class="sk-tag">REST</span><span class="sk-tag">JavaScript</span></div></div></div>
         <div class="sk-r"><span class="sk-ic">🚀</span><div class="sk-ri"><div class="sk-n">MLOps & Infra</div><div class="sk-tags"><span class="sk-tag">Docker</span><span class="sk-tag">CI/CD</span><span class="sk-tag">HuggingFace</span><span class="sk-tag">Streamlit</span><span class="sk-tag">Cloudflare Workers</span></div></div></div>
@@ -929,6 +929,76 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="pl panel-enter">Projects</div>
       <div class="pt panel-enter">Things<br>I Built</div>
       <div class="pj-list">
+
+        <!-- ConstructionMartt CRM -->
+        <div class="pj" id="pjcrm">
+          <div>
+            <div class="pj-meta"><span class="pj-tag">Full-Stack · Live</span><span class="pj-date">DEC 2025 – PRESENT</span></div>
+            <div class="pj-ti">ConstructionMartt CRM</div>
+            <div class="pj-de">Full-stack CRM for a construction materials trading business — live and used daily by the team for leads, orders, payments, and site tracking.</div>
+            <div class="pj-foot">
+              <span class="pj-st">FastAPI · MongoDB · React Native/Expo · WebSockets</span>
+              <a href="https://crm.constructionmartt.com" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()">↗ Live</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pjcrm',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">A construction materials trading startup was running leads, orders, payments, and vendor relationships off spreadsheets and WhatsApp — no role separation, no credit visibility, no site-stage tracking tied to demand.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">A full-stack CRM (FastAPI backend, MongoDB via Motor, React Native/Expo as a web-first PWA) with role-based access for Admin, Sales, Accounts, and Operations. Tracks leads through a sales funnel, generates estimates/sales orders/purchase orders as PDFs, records customer-wise payments with overdue alerts, and maps each customer's site through a 12-stage construction timeline (Excavation → Completion) for predictive material demand.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">Live</div><div class="case-metric-l">In daily use</div></div>
+                    <div class="case-metric"><div class="case-metric-n">4</div><div class="case-metric-l">User roles</div></div>
+                    <div class="case-metric"><div class="case-metric-n">12</div><div class="case-metric-l">Site stages tracked</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">FastAPI</span><span class="case-chip">MongoDB</span><span class="case-chip">React Native</span><span class="case-chip">Expo</span><span class="case-chip">JWT</span><span class="case-chip">WebSockets</span><span class="case-chip">ReportLab</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pj-ri"><div class="pj-mn" data-count="12" data-suffix="">0</div><div class="pj-ml">stage pipeline</div></div>
+        </div>
+
+        <!-- Healthcare Recommendation System -->
+        <div class="pj" id="pjhealth">
+          <div>
+            <div class="pj-meta"><span class="pj-tag">Healthcare AI</span><span class="pj-date">2025</span></div>
+            <div class="pj-ti">Healthcare Recommendation System</div>
+            <div class="pj-de">Multimodal clinical decision-support system — BERT symptom diagnosis, DDXPlus differential diagnosis, chest X-ray screening, and lab report OCR.</div>
+            <div class="pj-foot">
+              <span class="pj-st">PyTorch · Flask · DistilBERT/PubMedBERT · PostgreSQL</span>
+              <a href="https://github.com/harshaldonarkar/healthcare-recommendation-system" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pjhealth',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Differential diagnosis tools that optimize only top-1 accuracy hide how confident a model actually is. A system that's 95% sure it's right looks identical to one that's barely ahead of its second guess — until a patient gets the wrong one.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">Fine-tuned DistilBERT and PubMedBERT on DDXPlus (1M+ simulated patient cases, 49 pathologies) using KL-divergence soft-label training to optimize the full probability distribution, not just the top guess. Wrapped into a multimodal app: BERT symptom diagnosis, chest X-ray screening, OCR-based lab report analysis, and natural-language explanations across 5 LLM providers.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">15x</div><div class="case-metric-l">Less miscalibrated</div></div>
+                    <div class="case-metric"><div class="case-metric-n">0.921</div><div class="case-metric-l">NDCG@3 (vs 0.748 baseline)</div></div>
+                    <div class="case-metric"><div class="case-metric-n">67</div><div class="case-metric-l">Automated tests</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">PyTorch</span><span class="case-chip">DistilBERT</span><span class="case-chip">PubMedBERT</span><span class="case-chip">Flask</span><span class="case-chip">PostgreSQL</span><span class="case-chip">OCR</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pj-ri"><div class="pj-mn" data-count="15" data-suffix="x">0x</div><div class="pj-ml">less miscalibrated</div></div>
+        </div>
 
         <!-- Project 1 -->
         <div class="pj" id="pj0">
@@ -962,6 +1032,40 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
             </div>
           </div>
           <div class="pj-ri"><div class="pj-mn" data-count="65" data-suffix="%">0%</div><div class="pj-ml">faster docs</div></div>
+        </div>
+
+        <!-- MCP Server -->
+        <div class="pj" id="pjmcp">
+          <div>
+            <div class="pj-meta"><span class="pj-tag">Dev Tooling · Early Adopter</span><span class="pj-date">APR 2025</span></div>
+            <div class="pj-ti">MCP Server for Node.js Automation</div>
+            <div class="pj-de">Multi-tool MCP server (Python/FastMCP) exposing 10+ tools for Node.js project automation — built 5 months after Anthropic's MCP spec released.</div>
+            <div class="pj-foot">
+              <span class="pj-st">Python · FastMCP · Docker · npm registry API</span>
+              <a href="https://github.com/harshaldonarkar/mcp-server-demo" target="_blank" rel="noopener" class="pj-gh" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>View Code</a>
+              <button class="pj-expand-btn" onclick="toggleCase('pjmcp',event)"><span class="exp-icon">+</span> Case Study</button>
+            </div>
+            <div class="case-drawer">
+              <div class="case-inner">
+                <div>
+                  <div class="case-section-lbl">The Problem</div>
+                  <div class="case-section-body">Node.js project setup — scaffolding, TypeScript migration, Docker config, linting — is repetitive manual work that eats the first hours of every new project.</div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">The Solution</div>
+                  <div class="case-section-body">A multi-tool MCP server built on the early FastMCP SDK, five months after Anthropic released the MCP specification. Exposes scaffolding for Express/Next/React/TS, automated JS→TS conversion (including JSX→TSX), Docker and ESLint/Prettier setup, test generation, and live npm registry lookups — plus proper MCP resources and lifespan management.</div>
+                </div>
+                <div>
+                  <div class="case-section-lbl">Outcomes</div>
+                  <div class="case-metrics">
+                    <div class="case-metric"><div class="case-metric-n">10+</div><div class="case-metric-l">MCP tools</div></div>
+                    <div class="case-metric"><div class="case-metric-n">5mo</div><div class="case-metric-l">After MCP spec release</div></div>
+                  </div>
+                  <div class="case-section-lbl" style="margin-top:0.8rem">Full Stack</div>
+                  <div class="case-stack"><span class="case-chip">Python</span><span class="case-chip">FastMCP</span><span class="case-chip">Docker</span><span class="case-chip">ESLint</span><span class="case-chip">npm API</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pj-ri"><div class="pj-mn" data-count="10" data-suffix="+">0+</div><div class="pj-ml">MCP tools</div></div>
         </div>
 
         <!-- Project 2 -->
@@ -1265,7 +1369,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <div class="ach-a">
           <div class="pl" style="margin-bottom:0.75rem">Achievements & Milestones</div>
           <div class="timeline">
-            <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">Top 10 Finalist</div><div class="tl-desc">24-Hour National Hackathon 2K24</div><div class="tl-org">Innovation Foundation, Pune</div></div>
             <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">2nd Runner-Up</div><div class="tl-desc">'Hackengers' Hackathon</div><div class="tl-org">Livewire Teaching Institute, Chennai</div></div>
             <div class="tl-item"><div class="tl-year">2024–25</div><div class="tl-title">Intl Service Director</div><div class="tl-desc">Rotaract Club</div><div class="tl-org">Nagpur</div></div>
             <div class="tl-item"><div class="tl-year">2023–24</div><div class="tl-title">Technical Head</div><div class="tl-desc">Coding Club, KDKCE</div><div class="tl-org">College Leadership</div></div>
