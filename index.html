@@ -1254,7 +1254,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
 
       <div class="demo-footer-note">
-        Inference via <a href="https://groq.com" target="_blank">Groq</a> · llama-3.1-8b-instant · Proxied via Cloudflare Worker · Real inference, zero mocks
+        Inference via <a href="https://groq.com" target="_blank">Groq</a> · llama-3.3-70b-versatile · Proxied via Cloudflare Worker · Real inference, zero mocks
       </div>
     </div>
   </div>
@@ -1638,7 +1638,7 @@ async function runDemo() {
         if (demoMode === 'sentiment') {
           result.innerHTML += `<div class="sentiment-row">
             <span class="sentiment-chip ${getSentimentClass(text)}">${text.toLowerCase().includes('positive') ? '✓ Positive' : text.toLowerCase().includes('negative') ? '✗ Negative' : '— Neutral / Mixed'}</span>
-            <span style="font-family:var(--f-mono);font-size:0.52rem;color:rgba(242,237,228,0.25)">via Groq · llama-3.1-8b</span>
+            <span style="font-family:var(--f-mono);font-size:0.52rem;color:rgba(242,237,228,0.25)">via Groq · llama-3.3-70b</span>
           </div>`;
         } else if (demoMode === 'keypoints') {
           // Convert numbered list to HTML <ol>
