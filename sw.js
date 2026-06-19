@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hd-portfolio-v1';
+const CACHE_NAME = 'hd-portfolio-v2';
 const ASSETS = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
