@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hd-portfolio-v2';
+const CACHE_NAME = 'hd-portfolio-v3';
 const ASSETS = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
@@ -19,6 +19,19 @@ self.addEventListener('fetch', e => {
   // Network-first for API calls
   if (e.request.url.includes('workers.dev') || e.request.url.includes('web3forms')) {
     e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+    return;
+  }
+  // Network-first for page loads so a fixed index.html reaches visitors immediately
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request).then(response => {
+        if (response.ok) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+        }
+        return response;
+      }).catch(() => caches.match(e.request).then(r => r || caches.match('/index.html')))
+    );
     return;
   }
   // Stale-while-revalidate for assets

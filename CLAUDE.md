@@ -107,7 +107,9 @@ Powered by **Web3Forms** (`https://api.web3forms.com/submit`). The hidden `acces
 
 ### PWA
 
-`manifest.json` and `sw.js` make the site installable. The service worker uses stale-while-revalidate for assets and network-first for API calls (web3forms, workers.dev). The cache name is `hd-portfolio-v1` — bump this in `sw.js` to force cache invalidation after significant updates.
+`manifest.json` and `sw.js` make the site installable. The service worker uses network-first for page loads (navigations), network-first for API calls (web3forms, workers.dev), and stale-while-revalidate for other assets. The cache name is `hd-portfolio-v3` — bump this in `sw.js` to force cache invalidation after significant updates.
+
+**Script-order gotcha:** `render()` runs synchronously once during script parse. On mobile all panels are on screen at load, so anything `render()` calls (e.g. `runRadar`, `runProf`, `runCountUp`) must only touch `let`/`const` state declared *above* the render loop, or the script dies with a TDZ error and the loader never clears. The inline loader failsafe (4s timeout after `#loader`) is the backstop — keep it.
 
 ## Deployment
 

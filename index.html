@@ -777,6 +777,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="loader-sub">Loading portfolio...</div>
   </div>
 </div>
+<script>setTimeout(function(){var l=document.getElementById('loader');if(l){l.classList.add('done');setTimeout(function(){l.remove()},600);}},4000);</script>
+<noscript><style>#loader{display:none}</style></noscript>
 
 <div id="cursor"></div>
 <div id="progress"></div>
@@ -1444,7 +1446,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </button>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ─── WEB AUDIO: subtle click on panel snap ───
 let audioCtx = null;
 function playSnap(){
@@ -1802,6 +1804,7 @@ function runCountUp(){
 
 // ─── PROF BARS ───
 let profDone=false;
+let radarBuilt=false;
 function runProf(){if(profDone)return;profDone=true;document.querySelectorAll('.pfill').forEach(f=>setTimeout(()=>{f.style.width=f.getAttribute('data-w')+'%'},200));}
 
 // ─── MAIN RENDER LOOP ───
@@ -1961,7 +1964,6 @@ const darkObserver=new MutationObserver(()=>{
 darkObserver.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
 // ─── SKILLS RADAR CHART ───
-let radarBuilt=false;
 function buildRadar(){
   const svg=document.getElementById('radarSvg');
   if(!svg)return null;
